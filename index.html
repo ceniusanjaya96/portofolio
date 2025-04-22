@@ -6,46 +6,75 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet"> 
+  <link href="css/jBox.all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="images/icon.jpg">
   <title>Portfolio - Cenius Sanjaya</title>
 </head>
 <body>
 
+<div id="popupLogin">
+  <div class="popup-content">
+    <div class="row">
+      <div class="col-8">
+        <h3 class="color-black mb-4">Masuk</h3>
+      </div>
+      <div class="col-4" style="text-align:right;">
+        <span type="button" onclick="hideLoginPopup()">
+          <i class="fa-solid fa-times"></i>
+        </span>
+      </div>
+    </div>
+    <span class="color-black"><i class="fa-solid fa-user"></i> Username</span>
+    <input class="form-control" type="text" id="username" value="cenius_portofolio" placeholder="Username"><br>
+    <span class="color-black"><i class="fa-solid fa-lock"></i> Password</span>
+    <input class="form-control" type="password" id="password" value="123" placeholder="Password"><br>
+    <button type="button" class="login-button mb-3" onclick="login()">Login</button>
+    <div id="loading">Loading...</div>
+  </div>
+</div>
+
+<section id="section_login">
   <div class="hero">
     <img src="images/cenius.jpg" alt="Profile Photo">
-    <h3>Hi, Welcome to my Portofolio!</h3>
-    <button class="start-button" onclick="start_portofolio('content')">
-      Start
+    <h3>Hai, Selamat Datang!</h3>
+    <button class="start-button" onclick="showLoginPopup();">
+      Mulai
     </button>
   </div>
+</section>
 
+<section id="section_content">
   <div class="container" id="content">
     <div class="row">
       <div class="col-lg-5">
         <div class="sticky_nav">
           <img class="img_me mb-3" src="images/cenius.jpg" alt="Profile Photo">
-          <h5 class="mb-1">Hi, my name is</h5>
+          <h5 class="mb-1">Hai, Perkenalkan nama saya</h5>
           <h1 class="fw-bold">Cenius Sanjaya.</h1>
+          <button class="logout-button mb-3" onclick="logout();">
+            Logout
+          </button><br/>
           <span>
             <i class="fa-solid fa-envelope"></i> ceniusanjaya@gmail.com
           </span><br/>
           <span>
             <i class="fa-solid fa-phone"></i> +62 822-3323-0202
           </span>
-<!--           <nav class="mt-3">
-            <ul>
-              <a href="#about" class="nav-link active"><i class="fa-solid fa-user"></i> About Me</a>
-              <a href="#experience" class="nav-link"><i class="fa-solid fa-building"></i> Experience</a>
-              <a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
-              <a href="#skills" class="nav-link"><i class="fa-solid fa-laptop"></i> Skills</a>
-              <a href="#project" class="nav-link">Project</a>
-              <a href="#certificate" class="nav-link">Certificate</a>
-              <a href="#organizations" class="nav-link">Organizations</a>
-            </ul>
-          </nav>
- -->          
-        <div class="social-icons">
+
+          <!--           <nav class="mt-3">
+                      <ul>
+                        <a href="#about" class="nav-link active"><i class="fa-solid fa-user"></i> About Me</a>
+                        <a href="#experience" class="nav-link"><i class="fa-solid fa-building"></i> Experience</a>
+                        <a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+                        <a href="#skills" class="nav-link"><i class="fa-solid fa-laptop"></i> Skills</a>
+                        <a href="#project" class="nav-link">Project</a>
+                        <a href="#certificate" class="nav-link">Certificate</a>
+                        <a href="#organizations" class="nav-link">Organizations</a>
+                      </ul>
+                    </nav>
+           -->
+          <div class="social-icons">
             <a href="https://www.linkedin.com/in/cenius-sanjaya-a4b3232a7/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://instagram.com/ceniusanjaya/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@ceniusanjaya" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -56,12 +85,12 @@
       <div class="col-lg-7">
         <div class="row">
           <div class="col-lg-12 nav_div mb-5" id="about">
-            <h2>About <i class="fa-solid fa-user"></i></h2>
+            <h2>Tentang Saya <i class="fa-solid fa-user"></i></h2>
             Saya merupakan pengembang website dalam mendesain tampilan website yang berinteraksi langsung dengan pengguna. Dengan pengalaman saya selama 6 tahun dalam bidang pengembang website, saya siap untuk bekerja dan terus belajar untuk menghadapi tantangan baru.
           </div>
 
           <div class="col-lg-12 nav_div mb-5" id="experience">
-            <h2>Experience <i class="fa-solid fa-building"></i></h2>
+            <h2>Pengalaman Kerja <i class="fa-solid fa-building"></i></h2>
             <div class="row mb-3">
               <div class="col-3">
                 <h6>2017 - 2017</h6>
@@ -113,13 +142,34 @@
           </div>
 
           <div class="col-lg-12 nav_div mb-5" id="project">
-            <h2>Project</h2>
-            COMING SOON SEMENTARA KE SINI DULU AJA
-            <a href="https://rodextrip.com" target="_blank">RODEXTRIP</a>
+            <h2>Hasil Pekerjaan <i class="fa-solid fa-folder"></i></h2>
+
+            <h5 class="mb-3">Live Hasil Pekerjaan (Real) </h5>
+            <a class="start-button mb-5" style="text-decoration:unset;" href="https://rodextrip.com" target="_blank">Website RODEXTRIP <i class="fa-solid fa-up-right-from-square"></i></a><br/>
+
+            <h5 class="mt-5 mb-3">Live Hasil Pekerjaan (Real) </h5>
+            <div class="targets-wrapper">
+              <a class="demo-img" href="images/orbis_template1.jpg" data-jbox-image="gallery1" title="Template 1"><img src="images/orbis_template1.jpg" alt="Orbis Template 1"></a>
+              <a class="demo-img" href="images/orbis_template2.jpg" data-jbox-image="gallery1" title="Template 2"><img src="images/orbis_template2.jpg" alt="Orbis Template 2"></a>
+              <a class="demo-img" href="images/orbis_template3.jpg" data-jbox-image="gallery1" title="Template 3"><img src="images/orbis_template3.jpg" alt="Orbis Template 3"></a>
+              <a class="demo-img" href="images/orbis_template4.jpg" data-jbox-image="gallery1" title="Template 4"><img src="images/orbis_template4.jpg" alt="Orbis Template 4"></a>
+              <a class="demo-img" href="images/orbis_template5.jpg" data-jbox-image="gallery1" title="Template 5"><img src="images/orbis_template5.jpg" alt="Orbis Template 5"></a>
+              <a class="demo-img" href="images/orbis_template6.jpg" data-jbox-image="gallery1" title="Template 6"><img src="images/orbis_template6.jpg" alt="Orbis Template 6"></a>
+              <a class="demo-img" href="images/orbis_template7.jpg" data-jbox-image="gallery1" title="Template 7"><img src="images/orbis_template7.jpg" alt="Orbis Template 7"></a>
+              <a class="demo-img" href="images/project1.jpg" data-jbox-image="gallery1" title="Project 1"><img src="images/project1.jpg" alt="Orbis Project 1"></a>
+              <a class="demo-img" href="images/project2.jpg" data-jbox-image="gallery1" title="Project 2"><img src="images/project2.jpg" alt="Orbis Project 2"></a>
+              <a class="demo-img" href="images/project3.jpg" data-jbox-image="gallery1" title="Project 3"><img src="images/project3.jpg" alt="Orbis Project 3"></a>
+              <a class="demo-img" href="images/project4.jpg" data-jbox-image="gallery1" title="Project 4"><img src="images/project4.jpg" alt="Orbis Project 4"></a>
+              <a class="demo-img" href="images/project5.jpg" data-jbox-image="gallery1" title="Project 5"><img src="images/project5.jpg" alt="Orbis Project 5"></a>
+              <a class="demo-img" href="images/project6.jpg" data-jbox-image="gallery1" title="Project 6"><img src="images/project6.jpg" alt="Orbis Project 6"></a>
+              <a class="demo-img" href="images/project7.jpg" data-jbox-image="gallery1" title="Project 7"><img src="images/project7.jpg" alt="Orbis Project 7"></a>
+              <a class="demo-img" href="images/project8.jpg" data-jbox-image="gallery1" title="Project 8"><img src="images/project8.jpg" alt="Orbis Project 8"></a>
+              <a class="demo-img" href="images/orbis_template8.jpg" data-jbox-image="gallery1" title="Template 8"><img src="images/orbis_template8.jpg" alt="Orbis Template 8"></a>
+            </div>
           </div>
 
           <div class="col-lg-12 nav_div mb-5" id="education">
-            <h2>Education <i class="fa-solid fa-graduation-cap"></i></h2>
+            <h2>Pendidikan <i class="fa-solid fa-graduation-cap"></i></h2>
             <div class="row mb-3">
               <div class="col-3">
                 <h6>2011 - 2014</h6>
@@ -201,7 +251,7 @@
           </div>
 
           <div class="col-lg-12 nav_div mb-5" id="certificate">
-            <h2>Certificate <i class="fa-solid fa-certificate"></i></h2>
+            <h2>Sertifikat <i class="fa-solid fa-certificate"></i></h2>
             <div class="row mb-3">
               <div class="col-3">
                 <h6>2015</h6>
@@ -242,7 +292,7 @@
           </div>
 
           <div class="col-lg-12 nav_div mb-5" id="organizations">
-            <h2>Organizations <i class="fa-solid fa-users"></i></h2>
+            <h2>Organisasi <i class="fa-solid fa-users"></i></h2>
             <div class="row mb-3">
               <div class="col-3">
                 <h6>2015</h6>
@@ -355,37 +405,40 @@
   <footer class="text-center py-4 mt-5">
     <small>© 2025 Cenius Sanjaya. Built with 💙 using HTML, CSS, and Bootstrap.</small>
   </footer>
+</section>
 
-  <script src="js/jquery-3.7.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/all.min.js"></script>
-  <script src="js/main.js"></script>
 
-  <script>
-    const sections = document.querySelectorAll(".nav_div");
-    const navLinks = document.querySelectorAll(".nav-link");
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/all.min.js"></script>
+<script src="js/jBox.all.min.js"></script>
+<script src="js/main.js"></script>
 
-    window.addEventListener("scroll", () => {
-      let currentSection = null;
-      let scrollPosition = window.scrollY + 100; // offset biar lebih presisi
+<script>
+  const sections = document.querySelectorAll(".nav_div");
+  const navLinks = document.querySelectorAll(".nav-link");
 
-      sections.forEach((section) => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
+  window.addEventListener("scroll", () => {
+    let currentSection = null;
+    let scrollPosition = window.scrollY + 100; // offset biar lebih presisi
 
-        if (scrollPosition >= top && scrollPosition < top + height) {
-          currentSection = section.getAttribute("id");
-        }
-      });
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
 
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(currentSection)) {
-          link.classList.add("active");
-        }
-      });
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        currentSection = section.getAttribute("id");
+      }
     });
-  </script>
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(currentSection)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
